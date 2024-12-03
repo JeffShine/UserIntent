@@ -1,0 +1,7 @@
+7b_path: /home/pubw/proj/Qwen2-VL-7B-Instruct
+2b_path: /home/pubw/proj/Qwen2-VL-2B-Instruct
+json_path: /home/pubw/datasets/www25/test1/test1.json
+image_path: /home/pubw/datasets/www25/test1/images
+save_path: save
+id: ocr_caption
+model: ocr
