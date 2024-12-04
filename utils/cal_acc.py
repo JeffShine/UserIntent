@@ -54,8 +54,6 @@ def get_label_pred(jsonl_file):
             labels_task1.append(label)
             preds_task1.append(pred)
 
-
-
     return labels_task1, preds_task1,labels_task2,preds_task2
 
 
