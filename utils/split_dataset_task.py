@@ -1,7 +1,7 @@
 import json
 
 # 定义文件路径
-file_path = '/home/pubw/datasets/www25/train/train.json'
+file_path = '/home/pubw/datasets/www25/test1/test1.json'
 # 生成新文件名
 task1_name = file_path.replace('.json', '_task1.json')
 task2_name = file_path.replace('.json', '_task2.json')
