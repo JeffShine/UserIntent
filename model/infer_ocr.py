@@ -12,7 +12,7 @@ image_caption_template="""<image> 描述了{0} """
 
 class infer_ocr(InferModel_base):
 
-    def __init__(self,path_2b='/home/pubw/proj/Qwen2-VL-2B-Instruct',path_7b='/home/pubw/proj/Qwen2-VL-7B-Instruct'):
+    def __init__(self,path_2b='/home/jch/data/Qwen2-VL-2B-Instruct',path_7b='/home/jch/data/Qwen2-VL-7B-Instruct'):
         super().__init__(path_2b,path_7b)
         self.ocr=build_ocr()
     def get_ocr(self,img_path):
@@ -58,45 +58,48 @@ class infer_ocr(InferModel_base):
                 "role": "user",
                 "content": image_messages
             }])
-        #print(messages_2b)
-        image_caption_outputs=self.infer_llm(messages_2b,'2b')
-        #QA
-        messages_7b=[]
-        for data_item in data_list:
-            img_list=data_item['image']
-            ocr_prompt=[]
-            image_messages = []
-            image_captions=[]
-            for i,img_item in enumerate(img_list):
-                image_message = {
-                    "type": "image",
-                    "image": img_item  
-                }
-                image_captions.append(image_caption_template.format(image_caption_outputs[i]))
-                image_messages.append(image_message)
+        print(messages_2b)
+        # image_caption_outputs=self.infer_llm(messages_2b,'2b')
+        output=self.infer_llm(messages_2b,'2b')
+        print(output)
+        import pdb;pdb.set_trace()
+        # #QA
+        # messages_7b=[]
+        # for data_item in data_list:
+        #     img_list=data_item['image']
+        #     ocr_prompt=[]
+        #     image_messages = []
+        #     image_captions=[]
+        #     for i,img_item in enumerate(img_list):
+        #         image_message = {
+        #             "type": "image",
+        #             "image": img_item  
+        #         }
+        #         image_captions.append(image_caption_template.format(image_caption_outputs[i]))
+        #         image_messages.append(image_message)
             
-            instruction=[]
-            split_instrution=data_item['instruction'].split('<image>')
-            for i,sub_ins in enumerate(split_instrution):
-                instruction.append(sub_ins)
-                if i == len(split_instrution)-2:
-                    instruction.append(image_captions[i])
-                else:
-                    instruction.append("<image>")
+        #     instruction=[]
+        #     split_instrution=data_item['instruction'].split('<image>')
+        #     for i,sub_ins in enumerate(split_instrution):
+        #         instruction.append(sub_ins)
+        #         if i == len(split_instrution)-2:
+        #             instruction.append(image_captions[i])
+        #         else:
+        #             instruction.append("<image>")
 
             
-            image_messages.append({
-                "type": "text",
-                "text": " ".join(instruction)
-            })
-        #形成batch
-            messages_7b.append([{
-                "role": "user",
-                "content": image_messages
-            }])
-        print(messages_2b)
-        print(messages_7b)
-        output=self.infer_llm(messages_7b,'7b')
+        #     image_messages.append({
+        #         "type": "text",
+        #         "text": " ".join(instruction)
+        #     })
+        # #形成batch
+        #     messages_7b.append([{
+        #         "role": "user",
+        #         "content": image_messages
+        #     }])
+        # print(messages_2b)
+        # print(messages_7b)
+        # output=self.infer_llm(messages_7b,'7b')
         return output
         
         
