@@ -1,15 +1,19 @@
 import re
-from model.inferModel_base import InferModel_base
+from model.inferModel_single import InferModel_single
 from builder.ocr_builder import extract_ocr_info
 
-photo_template = """{0} 请你对图片进行总结，图片来自于网购手机应用界面"""
+photo_template = """{0} 请你对图片进行总结，图片来自于网购手机应用界面，请你告诉我最可能是什么界面，"""
 
 base_template="""Picture {0}: <image>\n"""
 
 qa_template = """{0}用户提问了这些内容：[{1}],客服回复了这些内容：[{2}], 请你短语总结用户提出的问题，客服有助于解决问题的回复"""
 
 qa = """用户提问了这些内容：[{0}],客服回复了这些内容：[{1}]\n"""
-image_caption_template="""需要注意的是本应用是淘宝，<image> 一个可能的参考描述是{0} """
+image_caption_template="""需要注意的是本应用是淘宝，<image> 描述了{0} """
+
+task2_label='''[\"实物拍摄(含售后)\",\"商品分类选项\",\"商品头图\",\"商品详情页截图\",\"下单过程中出现异常（显示购买失败浮窗）\",\"订单详情页面\",\"支付页面\",\"消费者与客服聊天页面\",\"评论区截图页面\",\"物流页面-物流列表页面\",\"物流页面-物流跟踪页面\",\"物流页面-物流异常页面\",\"退款页面\",\"退货页面\",\"换货页面\",\"购物车页面\",\"店铺页面\",\"活动页面\",\"优惠券领取页面\",\"账单/账户页面\",\"个人信息页面\",\"投诉举报页面\",\"平台介入页面\",\"外部APP截图\",\"其他类别图片\"]'''
+
+
 
 def split_conv(conv):
     user_dialogues = []
@@ -25,8 +29,15 @@ def split_conv(conv):
             service_dialogues.append(line)
     
     return user_dialogues,service_dialogues
-class infer_cot(InferModel_base):
+class infer_sgg(InferModel_single):
     
+
+    def set_attribute(self):
+        pass
+
+    def generate_sgg(self,batch):
+        pass
+
     def forward(self,batch):
         messages_2b=[]
         messages_7b=[]
