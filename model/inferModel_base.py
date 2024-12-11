@@ -9,12 +9,12 @@ from abc import ABC, abstractmethod
 
 
 class InferModel_base(nn.Module):
-    def __init__(self,path_2b='/home/jch/projects/CCoT/out_files/Qwen2-VL-2B-Instruct',path_7b='/home/jch/projects/CCoT/out_files/Qwen2-VL-7B-Instruct'):
+    def __init__(self,path_2b='/home/jch/projects/CCoT/weights/Qwen2-VL-2B-Instruct',path_7b='/home/jch/projects/CCoT/weights/Qwen2-VL-7B-Instruct'):
         super().__init__()
-        self.llm_2b=build_llm(path_2b)
+        # self.llm_2b=build_llm(path_2b)
         self.llm_7b=build_llm(path_7b)
 
-        self.processor = AutoProcessor.from_pretrained("/home/jch/projects/CCoT/out_files/Qwen2-VL-7B-Instruct")
+        self.processor = AutoProcessor.from_pretrained("/home/jch/projects/CCoT/weights/Qwen2-VL-7B-Instruct")
 
 
     # messages:[messages1, messages2,]
@@ -38,7 +38,8 @@ class InferModel_base(nn.Module):
             output_ids = self.llm_7b.generate(**inputs, max_new_tokens=256)
             # pass
         elif llm_size=='2b':
-            output_ids = self.llm_2b.generate(**inputs, max_new_tokens=256)
+            # output_ids = self.llm_2b.generate(**inputs, max_new_tokens=256)
+            pass
         
         generated_ids = [
             output_ids[len(input_ids) :]

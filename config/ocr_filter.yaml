@@ -1,7 +1,7 @@
-7b_path: /home/jch/projects/CCoT/out_files/Qwen2-VL-7B-Instruct
-2b_path: /home/jch/projects/CCoT/out_files/Qwen2-VL-2B-Instruct
-json_path: /home/jch/projects/UserIntent/ocr_try/result/train_task1_ocr.json
-image_path: /home/jch/data/www25/train/images/
+7b_path: /home/jch/projects/CCoT/weights/Qwen2-VL-7B-Instruct
+2b_path: /home/jch/projects/CCoT/weights/Qwen2-VL-2B-Instruct
+json_path: /home/jch/projects/CCoT/UserIntent/ocr_try/result/test1_ocr_filtered.json
+image_path: /home/jch/data/www25/test1/images/
 save_path: save
 id: ocr_filter
 model: filter
