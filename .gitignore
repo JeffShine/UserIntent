@@ -59,5 +59,11 @@ logs/
 # 忽略临时文件
 *.tmp
 *.temp
-
+*.json
 *.jsonl
+*.zip
+
+# 忽略ocr结果
+/ocr_try/result
+
+/data_analyze/train_images

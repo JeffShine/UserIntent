@@ -2,14 +2,14 @@ import re
 from model.inferModel_base import InferModel_base
 from builder.ocr_builder import extract_ocr_info
 
-photo_template = """{0} 请你对图片进行总结，图片来自于网购手机应用界面，请你告诉我最可能是什么界面，"""
+photo_template = """{0} 请你对图片进行总结，图片来自于网购手机应用界面"""
 
 base_template="""Picture {0}: <image>\n"""
 
 qa_template = """{0}用户提问了这些内容：[{1}],客服回复了这些内容：[{2}], 请你短语总结用户提出的问题，客服有助于解决问题的回复"""
 
 qa = """用户提问了这些内容：[{0}],客服回复了这些内容：[{1}]\n"""
-image_caption_template="""需要注意的是本应用是淘宝，<image> 描述了{0} """
+image_caption_template="""需要注意的是本应用是淘宝，<image> 一个可能的参考描述是{0} """
 
 def split_conv(conv):
     user_dialogues = []

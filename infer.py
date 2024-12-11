@@ -4,7 +4,6 @@ import math
 import os
 import queue
 import time
-
 import yaml
 from datetime import datetime
 import logging
