@@ -9,6 +9,7 @@
  qwen-vl-utils
  torch #根据需要安装
  flash-attn #根据版本下载whl安装，不要用pip直接在线安装
+ https://github.com/Dao-AILab/flash-attention/releases
  ```
 
 ## 使用说明

@@ -76,6 +76,7 @@ def eval_model(args):
             unlock_file(save_path)
             logging.info(f"Processed batch {batch_index}: {batch}")
         except Exception as e:
+            print(f"error batch {batch_index}: {e}")
             logging.info(f"error batch {batch_index}: {e}")
 
 
